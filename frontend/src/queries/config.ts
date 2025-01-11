@@ -1,6 +1,5 @@
-import type { QueryClient } from '@tanstack/vue-query'
 import type { configs } from 'wailsjs/go/models'
-import { useMutation, useQuery } from '@tanstack/vue-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { GetAppName, GetConfig, SaveConfig } from 'wailsjs/go/main/App'
 
 export function useAppNameQuery() {
@@ -17,7 +16,8 @@ export function useConfigQuery() {
   })
 }
 
-export function mutateConfig(queryClient: QueryClient) {
+export function mutateConfig() {
+  const queryClient = useQueryClient()
   return useMutation({
     mutationKey: ['config'],
     mutationFn: (config: configs.Config) => SaveConfig(config),
