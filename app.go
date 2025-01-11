@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	"ping-pal/backend/configs"
-
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/runtime"
+
+	"ping-pal/backend/configs"
 )
 
 // App struct
@@ -29,6 +29,9 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
+
+	// load the config
+	a.config.Load()
 }
 
 func (a *App) domReady(ctx context.Context) {
@@ -40,7 +43,7 @@ func (a *App) shutdown(ctx context.Context) {
 }
 
 func (a *App) initialize() {
-	a.config.Load()
+	// a.config.Load()
 
 	// err := a.database.Connect()
 	// if err != nil {

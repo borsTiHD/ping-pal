@@ -127,6 +127,8 @@ func (config *Config) Load() error {
 		return err
 	}
 
+	log.Info("Loaded app config:", config)
+
 	return nil
 }
 
