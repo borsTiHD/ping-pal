@@ -1,23 +1,16 @@
-import pluginVue from 'eslint-plugin-vue'
-import vueTsEslintConfig from '@vue/eslint-config-typescript'
-import pluginVitest from '@vitest/eslint-plugin'
+import antfu from '@antfu/eslint-config'
+import vue from 'eslint-plugin-vue'
 
-export default [
+export default antfu(
   {
-    name: 'app/files-to-lint',
-    files: ['**/*.{ts,mts,tsx,vue}'],
+    // Configures for antfu's config
   },
 
+  // From the second arguments they are ESLint Flat Configs
+  // you can have multiple configs
   {
-    name: 'app/files-to-ignore',
-    ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
+    plugins: {
+      vue,
+    },
   },
-
-  ...pluginVue.configs['flat/essential'],
-  ...vueTsEslintConfig(),
-  
-  {
-    ...pluginVitest.configs.recommended,
-    files: ['src/**/__tests__/*'],
-  },
-]
+)
