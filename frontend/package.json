@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@primevue/themes": "^4.2.5",
+    "@tanstack/vue-query": "^5.62.16",
+    "@tanstack/vue-query-devtools": "^5.62.16",
     "lucide-vue-next": "^0.471.0",
     "pinia": "^2.3.0",
     "primevue": "^4.2.5",
