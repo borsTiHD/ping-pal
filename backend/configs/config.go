@@ -101,6 +101,7 @@ func (c *Config) CreateDefault() {
 	c.App.ShowedWelcome = true
 	c.User.AutoStart = false
 	c.User.PushNotifications = true
+	c.User.DarkMode = true
 
 	err := c.Save()
 	if err != nil {

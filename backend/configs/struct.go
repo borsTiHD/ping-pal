@@ -12,4 +12,5 @@ type AppConfig struct {
 type UserConfig struct {
 	AutoStart         bool `json:"autoStart"`
 	PushNotifications bool `json:"pushNotifications"`
+	DarkMode          bool `json:"darkMode"`
 }

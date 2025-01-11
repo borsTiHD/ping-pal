@@ -15,6 +15,7 @@ export namespace configs {
 	export class UserConfig {
 	    autoStart: boolean;
 	    pushNotifications: boolean;
+	    darkMode: boolean;
 	
 	    static createFrom(source: any = {}) {
 	        return new UserConfig(source);
@@ -24,6 +25,7 @@ export namespace configs {
 	        if ('string' === typeof source) source = JSON.parse(source);
 	        this.autoStart = source["autoStart"];
 	        this.pushNotifications = source["pushNotifications"];
+	        this.darkMode = source["darkMode"];
 	    }
 	}
 	export class Config {
