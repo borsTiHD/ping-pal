@@ -3,6 +3,7 @@ import Aura from '@primevue/themes/aura'
 import Button from 'primevue/button'
 import PrimeVue from 'primevue/config'
 import InputText from 'primevue/inputtext'
+import ProgressSpinner from 'primevue/progressspinner'
 
 export const PrimeVuePlugin = {
   install(app: App) {
@@ -24,5 +25,6 @@ export const PrimeVuePlugin = {
     // Components
     app.component('Button', Button)
     app.component('InputText', InputText)
+    app.component('ProgressSpinner', ProgressSpinner)
   },
 }
