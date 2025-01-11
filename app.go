@@ -60,7 +60,34 @@ func (a *App) onSecondInstanceLaunch(secondInstanceData options.SecondInstanceDa
 	go runtime.EventsEmit(a.ctx, "launchArgs", secondInstanceData.Args)
 }
 
-// Greet returns a greeting for the given name
+/*
+ * The following functions are public and are published to the frontend part of the application.
+ */
+func (a *App) GetConfig() configs.Config {
+	return a.config
+}
+
+func (a *App) GetAppName() string {
+	return configs.AppName
+}
+
+func (a *App) GetVersion() string {
+	return configs.AppVersion
+}
+
+func (a *App) GetChannel() string {
+	return configs.AppChannel
+}
+
+func (a *App) GetRepoUrl() string {
+	return configs.RepoUrl
+}
+
+func (a *App) SaveConfig(config configs.Config) {
+	a.config = config
+	a.config.Save()
+}
+
 func (a *App) Greet(name string) string {
 	return fmt.Sprintf("Hello %s, It's show time!", name)
 }
