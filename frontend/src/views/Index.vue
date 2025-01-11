@@ -18,7 +18,7 @@ async function onClick() {
         Hello world!
       </h1>
       <input v-model="input" type="text" placeholder="Enter your name">
-      <button class="p-4 bg-red-400" @click="onClick">
+      <button class="p-4 dark:bg-red-400" @click="onClick">
         Greetings
       </button>
     </div>
