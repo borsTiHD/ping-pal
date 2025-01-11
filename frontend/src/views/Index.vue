@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import TheWelcome from '@/components/TheWelcome.vue'
 import { ref } from 'vue'
 import { Greet } from 'wailsjs/go/backend/App'
 
@@ -22,7 +21,5 @@ async function onClick() {
         Greetings
       </button>
     </div>
-
-    <TheWelcome />
   </main>
 </template>
