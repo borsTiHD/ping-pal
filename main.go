@@ -9,8 +9,11 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
 
-	"ping-pal/backend"
+	"ping-pal/backend/configs"
 )
+
+// is used for single instance locking. This means that only one instance of the application can be running at a time.
+var guid = "com.pingpal.app"
 
 //go:embed all:frontend/dist
 var assets embed.FS
@@ -25,20 +28,33 @@ func main() {
 	})
 
 	// Create an instance of the app structure
-	app := backend.NewApp()
+	app := NewApp()
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:  "ping-pal",
-		Width:  1024,
-		Height: 768,
+		Title: configs.AppName,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
+
+		// Window options
+		Width:     configs.Width,
+		Height:    configs.Height,
+		MinWidth:  configs.Width,
+		MinHeight: configs.Height,
+		// MaxWidth:  configs.Width,
+		// MaxHeight: configs.Height,
 		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
-		OnStartup:        app.Startup,
-		OnShutdown:       app.Shutdown,
-		OnDomReady:       app.DomReady,
+		Frameless:        false,
+
+		// Application events
+		OnStartup:  app.startup,
+		OnShutdown: app.shutdown,
+		OnDomReady: app.domReady,
+		SingleInstanceLock: &options.SingleInstanceLock{
+			UniqueId:               guid,
+			OnSecondInstanceLaunch: app.onSecondInstanceLaunch,
+		},
 		Bind: []interface{}{
 			app,
 		},

@@ -1,10 +1,13 @@
-package backend
+package main
 
 import (
 	"context"
 	"fmt"
 
 	"ping-pal/backend/configs"
+
+	"github.com/wailsapp/wails/v2/pkg/options"
+	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 // App struct
@@ -24,15 +27,15 @@ func NewApp() *App {
 
 // startup is called when the app starts. The context is saved
 // so we can call the runtime methods
-func (a *App) Startup(ctx context.Context) {
+func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 }
 
-func (a *App) DomReady(ctx context.Context) {
+func (a *App) domReady(ctx context.Context) {
 	a.initialize()
 }
 
-func (a *App) Shutdown(ctx context.Context) {
+func (a *App) shutdown(ctx context.Context) {
 
 }
 
@@ -47,6 +50,14 @@ func (a *App) initialize() {
 	// a.database.Migrate()
 
 	// tools.PushToRoute(a.ctx, "/app/index")
+}
+
+// when a second instance is launched, this function is called
+// prevents multiple instances of the app running
+func (a *App) onSecondInstanceLaunch(secondInstanceData options.SecondInstanceData) {
+	runtime.WindowUnminimise(a.ctx)
+	runtime.Show(a.ctx)
+	go runtime.EventsEmit(a.ctx, "launchArgs", secondInstanceData.Args)
 }
 
 // Greet returns a greeting for the given name
