@@ -13,10 +13,15 @@ async function onClick() {
 
 <template>
   <main>
-    <input v-model="input" type="text" placeholder="Enter your name">
-    <button @click="onClick">
-      Greetings
-    </button>
+    <div class="flex flex-col items-center p-4">
+      <h1 className="text-3xl font-bold underline text-red-500">
+        Hello world!
+      </h1>
+      <input v-model="input" type="text" placeholder="Enter your name">
+      <button class="p-4 bg-red-400" @click="onClick">
+        Greetings
+      </button>
+    </div>
 
     <TheWelcome />
   </main>
