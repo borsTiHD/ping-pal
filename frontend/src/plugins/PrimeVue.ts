@@ -17,10 +17,10 @@ export const PrimeVuePlugin = {
         options: {
           prefix: 'p',
           darkModeSelector: '.dark',
-          // cssLayer: {
-          //   name: 'primevue',
-          //   order: 'tailwind-base, primevue, tailwind-utilities',
-          // },
+          cssLayer: {
+            name: 'primevue',
+            order: 'tailwind-base, primevue, tailwind-utilities',
+          },
         },
       },
     })
