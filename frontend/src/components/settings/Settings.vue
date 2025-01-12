@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useConfig } from '@/composables/config'
 import { useConfigQuery } from '@/queries/config'
+import { useAppLayoutStore } from '@/stores/app-layout'
+import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 
 const { data: config, isFetching: configIsFetching } = useConfigQuery()
@@ -12,6 +14,16 @@ const darkMode = computed({
     await updateConfigOption('user.darkMode', value)
   },
 })
+
+const { layout } = storeToRefs(useAppLayoutStore())
+const { setLayout } = useAppLayoutStore()
+
+function changeToBlank() {
+  setLayout('BlankLayout')
+}
+function changeToApp() {
+  setLayout('AppLayout')
+}
 </script>
 
 <template>
@@ -25,6 +37,22 @@ const darkMode = computed({
       <h1 className="text-3xl font-bold underline text-blue-500">
         Settings
       </h1>
+
+      <div class="flex flex-col gap-4">
+        <h2 class="text-lg font-bold text-blue-500">
+          Change Layout
+        </h2>
+
+        <span>Current Layout: {{ layout }}</span>
+
+        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md" @click="changeToBlank">
+          Blank Layout
+        </button>
+
+        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md" @click="changeToApp">
+          App Layout
+        </button>
+      </div>
 
       <div class="mt-4">
         <h2 class="text-lg font-bold text-blue-500">
