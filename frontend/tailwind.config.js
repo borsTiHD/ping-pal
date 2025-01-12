@@ -2,7 +2,7 @@ import animate from 'tailwindcss-animate'
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'selector',
+  darkMode: ['selector', '[data-mode="dark"]'],
   safelist: ['dark'],
   prefix: '',
 
