@@ -5,6 +5,7 @@ import PrimeVue from 'primevue/config'
 import InputText from 'primevue/inputtext'
 import ProgressSpinner from 'primevue/progressspinner'
 import ScrollPanel from 'primevue/scrollpanel'
+import SelectButton from 'primevue/selectbutton'
 import ToggleSwitch from 'primevue/toggleswitch'
 
 export const PrimeVuePlugin = {
@@ -30,5 +31,6 @@ export const PrimeVuePlugin = {
     app.component('InputText', InputText)
     app.component('ProgressSpinner', ProgressSpinner)
     app.component('ToggleSwitch', ToggleSwitch)
+    app.component('SelectButton', SelectButton)
   },
 }
