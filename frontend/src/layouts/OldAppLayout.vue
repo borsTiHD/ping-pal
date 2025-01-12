@@ -1,7 +1,7 @@
 <script setup>
-import { useDarkMode } from '@/composables/dark-mode'
+import { useDarkModeState } from '@/composables/darkmode/index'
 
-const { isDarkMode } = useDarkMode()
+const { isDarkMode } = useDarkModeState()
 </script>
 
 <template>

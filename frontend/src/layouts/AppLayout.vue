@@ -1,4 +1,6 @@
 <script setup lang=ts>
+import ColorModeChanger from '@/components/settings/ColorModeChanger.vue'
+
 import {
   Avatar,
   AvatarFallback,
@@ -13,7 +15,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
-
 import {
   Collapsible,
   CollapsibleContent,
@@ -49,6 +50,8 @@ import {
   SidebarRail,
   SidebarTrigger,
 } from '@/components/ui/sidebar'
+import { useDarkModeEffects } from '@/composables/darkmode'
+
 import {
   AudioWaveform,
   BadgeCheck,
@@ -73,7 +76,10 @@ import {
   SquareTerminal,
   Trash2,
 } from 'lucide-vue-next'
+
 import { ref } from 'vue'
+
+useDarkModeEffects()
 
 // This is sample data.
 const data = {
@@ -448,6 +454,12 @@ function setActiveTeam(team: typeof data.teams[number]) {
           <div class="aspect-video rounded-xl bg-muted/50" />
           <div class="aspect-video rounded-xl bg-muted/50" />
           <div class="aspect-video rounded-xl bg-muted/50" />
+        </div>
+        <div>
+          <h1 class="text-2xl font-semibold">
+            Color Mode
+          </h1>
+          <ColorModeChanger />
         </div>
         <div class="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
       </div>

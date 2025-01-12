@@ -1,19 +1,9 @@
 <script setup lang="ts">
-import { useConfig } from '@/composables/config'
 import { useConfigQuery } from '@/queries/config'
 import { useAppLayoutStore } from '@/stores/app-layout'
 import { storeToRefs } from 'pinia'
-import { computed } from 'vue'
 
 const { data: config, isFetching: configIsFetching } = useConfigQuery()
-const { updateConfigOption } = useConfig()
-
-const darkMode = computed({
-  get: () => config.value?.user?.darkMode ?? false,
-  set: async (value: boolean) => {
-    await updateConfigOption('user.darkMode', value)
-  },
-})
 
 const { layout } = storeToRefs(useAppLayoutStore())
 const { setLayout } = useAppLayoutStore()
@@ -52,15 +42,6 @@ function changeToApp() {
         <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md" @click="changeToApp">
           App Layout
         </button>
-      </div>
-
-      <div class="mt-4">
-        <h2 class="text-lg font-bold text-blue-500">
-          Dark Mode
-        </h2>
-        <div class="flex flex-col gap-2">
-          <ToggleSwitch v-model="darkMode" />
-        </div>
       </div>
 
       <div class="mt-4">
