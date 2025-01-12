@@ -13,19 +13,19 @@
   Edited by: @borsTiHD
 */
 
-// import AppLayout from './AppLayout.vue'
+import AppLayout from './AppLayout.vue'
 import BlankLayout from './BlankLayout.vue'
 import OldAppLayout from './OldAppLayout.vue'
 
 export interface Layouts {
   [key: string]: any
-  // AppLayout: typeof AppLayout
+  AppLayout: typeof AppLayout
   OldAppLayout: typeof OldAppLayout
   BlankLayout: typeof BlankLayout
 }
 
 const layouts: Layouts = {
-  // AppLayout,
+  AppLayout,
   OldAppLayout,
   BlankLayout,
 }

@@ -1,4 +1,4 @@
-<!-- <script setup lang=ts>
+<script setup lang=ts>
 import {
   Avatar,
   AvatarFallback,
@@ -453,4 +453,4 @@ function setActiveTeam(team: typeof data.teams[number]) {
       </div>
     </SidebarInset>
   </SidebarProvider>
-</template> -->
+</template>
