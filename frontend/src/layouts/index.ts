@@ -15,15 +15,18 @@
 
 import AppLayout from './AppLayout.vue'
 import BlankLayout from './BlankLayout.vue'
+import OldAppLayout from './OldAppLayout.vue'
 
 export interface Layouts {
   [key: string]: any
   AppLayout: typeof AppLayout
+  OldAppLayout: typeof OldAppLayout
   BlankLayout: typeof BlankLayout
 }
 
 const layouts: Layouts = {
   AppLayout,
+  OldAppLayout,
   BlankLayout,
 }
 
