@@ -1,4 +1,4 @@
-const animate = require('tailwindcss-animate')
+import animate from 'tailwindcss-animate'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -49,5 +49,5 @@ export default {
       },
     },
   },
-  plugins: [animate],
+  plugins: [animate, require('tailwindcss-primeui')],
 }
