@@ -6,8 +6,10 @@
     "paths": {
       "@/*": ["./src/*"],
       "wailsjs/go/*": ["./wailsjs/go/*"]
-    }
+    },
+
+    "typeRoots": ["./node_modules/@types", "./types"]
   },
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "types/**/*"],
   "exclude": ["src/**/__tests__/*"]
 }
