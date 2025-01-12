@@ -1,6 +1,6 @@
 import type { configs } from 'wailsjs/go/models'
+import { setObjectValueByPath } from '@/lib/object'
 import { mutateConfig, useConfigQuery } from '@/queries/config'
-import { setObjectValueByPath } from '@/utils/object'
 
 export function useConfig() {
   const { data } = useConfigQuery()
