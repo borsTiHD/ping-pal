@@ -7,7 +7,7 @@ import App from './App.vue'
 import router from './router'
 
 import './assets/styles/font.css'
-import './assets/styles/shadcn.css'
+import './assets/styles/tailwind.css'
 import './assets/styles/main.css'
 
 const app = createApp(App)

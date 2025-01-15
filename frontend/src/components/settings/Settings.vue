@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ColorModeChanger from '@/components/settings/ColorModeChanger.vue'
 import { useConfigQuery } from '@/queries/config'
 import { useAppLayoutStore } from '@/stores/app-layout'
 import { storeToRefs } from 'pinia'
@@ -27,6 +28,13 @@ function changeToApp() {
       <h1 className="text-3xl font-bold underline text-blue-500">
         Settings
       </h1>
+
+      <!-- <div class="flex flex-col gap-4">
+        <h2 class="text-lg font-bold text-blue-500">
+          Color Mode
+        </h2>
+        <ColorModeChanger />
+      </div> -->
 
       <div class="flex flex-col gap-4">
         <h2 class="text-lg font-bold text-blue-500">
