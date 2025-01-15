@@ -29,12 +29,12 @@ function changeToApp() {
         Settings
       </h1>
 
-      <!-- <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-4">
         <h2 class="text-lg font-bold text-blue-500">
           Color Mode
         </h2>
         <ColorModeChanger />
-      </div> -->
+      </div>
 
       <div class="flex flex-col gap-4">
         <h2 class="text-lg font-bold text-blue-500">
