@@ -16,35 +16,22 @@ export function useDarkModeState() {
     { value: 'light', label: 'Light' },
   ]
 
-  const colorMode = computed(() => config.value?.user?.colorMode as ColorMode)
+  const colorModeSetting = computed(() => config.value?.user?.colorMode as ColorMode)
   const systemColorMode = computed(() => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-  const isDarkMode = computed(() => colorMode.value === 'dark' || (colorMode.value === 'auto' && systemColorMode.value === 'dark'))
+  const isDarkMode = computed(() => colorModeSetting.value === 'dark' || (colorModeSetting.value === 'auto' && systemColorMode.value === 'dark'))
 
+  // v-model for the color mode (updates the config.json)
   const colorModeModel = computed({
-    get: () => colorMode.value,
+    get: () => colorModeSetting.value,
     set: async (value: ColorMode) => {
+      mode.value = value
       await updateConfigOption('user.colorMode', value)
     },
   })
 
-  function changeColorMode(value: ColorMode) {
-    if (value === 'auto') {
-      document.documentElement.classList.toggle(
-        'dark',
-        colorMode.value === 'dark' || (colorMode.value === 'auto' && systemColorMode.value === 'dark'),
-      )
-      mode.value = 'auto'
-    }
-    else {
-      document.documentElement.classList.toggle('dark', value === 'dark')
-      mode.value = colorMode.value
-    }
-  }
-
   return {
-    colorModeModel, // v-model for the color mode (changes also the config.json)
+    colorModeModel, // v-model for the color mode
     colorModes, // List of available color modes
     isDarkMode, // Boolean if the current color mode is dark
-    changeColorMode, // Function to change the color mode
   }
 }
