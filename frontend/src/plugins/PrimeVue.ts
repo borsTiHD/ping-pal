@@ -1,6 +1,7 @@
 import type { App } from 'vue'
 import Aura from '@primevue/themes/aura'
 import Button from 'primevue/button'
+import Card from 'primevue/card'
 import PrimeVue from 'primevue/config'
 import InputText from 'primevue/inputtext'
 import ProgressSpinner from 'primevue/progressspinner'
@@ -28,6 +29,7 @@ export const PrimeVuePlugin = {
     // Components
     app.component('ScrollPanel', ScrollPanel)
     app.component('Button', Button)
+    app.component('Card', Card)
     app.component('InputText', InputText)
     app.component('ProgressSpinner', ProgressSpinner)
     app.component('ToggleSwitch', ToggleSwitch)

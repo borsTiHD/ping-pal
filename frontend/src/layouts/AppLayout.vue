@@ -10,7 +10,9 @@
         },
       }"
     >
-      <slot />
+      <div class="m-4">
+        <slot />
+      </div>
     </ScrollPanel>
   </div>
 </template>
