@@ -1,6 +1,6 @@
 import { useConfig } from '@/composables/config'
 import { useConfigQuery } from '@/queries/config'
-import { useColorMode } from '@vueuse/core'
+import { useColorMode, usePreferredDark } from '@vueuse/core'
 import { computed } from 'vue'
 
 type ColorMode = 'auto' | 'dark' | 'light'
@@ -8,7 +8,9 @@ type ColorMode = 'auto' | 'dark' | 'light'
 export function useDarkModeState() {
   const { data: config } = useConfigQuery()
   const { updateConfigOption } = useConfig()
+
   const mode = useColorMode()
+  const isSystemDarkMode = usePreferredDark()
 
   const colorModes = [
     { value: 'auto', label: 'Auto' },
@@ -17,8 +19,7 @@ export function useDarkModeState() {
   ]
 
   const colorModeSetting = computed(() => config.value?.user?.colorMode as ColorMode)
-  const systemColorMode = computed(() => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-  const isDarkMode = computed(() => colorModeSetting.value === 'dark' || (colorModeSetting.value === 'auto' && systemColorMode.value === 'dark'))
+  const isDarkMode = computed(() => colorModeSetting.value === 'dark' || (colorModeSetting.value === 'auto' && isSystemDarkMode.value))
 
   // v-model for the color mode (updates the config.json)
   const colorModeModel = computed({
