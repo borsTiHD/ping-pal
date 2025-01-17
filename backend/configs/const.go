@@ -14,7 +14,7 @@ const (
 
 // Window
 const (
-	Width  = 470
+	Width  = 1200
 	Height = 650
 )
 
