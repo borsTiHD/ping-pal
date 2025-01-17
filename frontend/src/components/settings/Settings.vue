@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ColorModeChanger from '@/components/settings/ColorModeChanger.vue'
+import WindowSize from '@/components/settings/WindowSize.vue'
 import { useConfigQuery } from '@/queries/config'
 import { useAppLayoutStore } from '@/stores/app-layout'
 import { storeToRefs } from 'pinia'
@@ -35,6 +36,13 @@ function changeToApp() {
               Color Mode
             </h2>
             <ColorModeChanger />
+          </div>
+
+          <div class="flex flex-col gap-4">
+            <h2 class="text-lg font-bold text-blue-500">
+              Window Size
+            </h2>
+            <WindowSize />
           </div>
 
           <div class="flex flex-col gap-4">
