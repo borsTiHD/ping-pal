@@ -6,22 +6,24 @@ import SidebarMobile from '@/components/ui/sidebar/SidebarMobile.vue'
 import { FolderClosed, House, Users } from 'lucide-vue-next'
 import { ref } from 'vue'
 
+const sidebarOpen = ref(false)
+
 const navigation: NavigationItem[] = [
   { name: 'Dashboard', path: '/', icon: House },
   { name: 'Team', path: '#', icon: Users },
   { name: 'Projects', path: '#', icon: FolderClosed },
 ]
+
 const teams: TeamItem[] = [
   { name: 'Heroicons', path: '#', initial: 'H' },
   { name: 'Tailwind Labs', path: '#', initial: 'T' },
   { name: 'Workcation', path: '#', initial: 'W' },
 ]
+
 const userNavigation: UserNavigationItem[] = [
   { name: 'Your profile', path: '#' },
   { name: 'Sign out', path: '#' },
 ]
-
-const sidebarOpen = ref(false)
 </script>
 
 <template>

@@ -1,7 +1,9 @@
+import type { LucideIcon } from 'lucide-vue-next'
+
 export interface NavigationItem {
   name: string
   path: string
-  icon: any // You can replace 'any' with the specific type if you know it
+  icon: LucideIcon
 }
 
 export interface UserNavigationItem {
