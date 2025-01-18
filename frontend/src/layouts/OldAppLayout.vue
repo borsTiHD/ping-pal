@@ -1,0 +1,18 @@
+<script setup lang=ts>
+</script>
+
+<template>
+  <div class="app-layout h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <ScrollPanel
+      class="w-full h-full" :dt="{
+        bar: {
+          background: '{primary.color}',
+        },
+      }"
+    >
+      <div class="m-4">
+        <slot />
+      </div>
+    </ScrollPanel>
+  </div>
+</template>
