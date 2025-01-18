@@ -1,21 +1,10 @@
 <script setup lang="ts">
+import ChangeLayout from '@/components/settings/ChangeLayout.vue'
 import ColorModeChanger from '@/components/settings/ColorModeChanger.vue'
 import WindowSize from '@/components/settings/WindowSize.vue'
 import { useConfigQuery } from '@/queries/config'
-import { useAppLayoutStore } from '@/stores/app-layout'
-import { storeToRefs } from 'pinia'
 
 const { data: config, isFetching: configIsFetching } = useConfigQuery()
-
-const { layout } = storeToRefs(useAppLayoutStore())
-const { setLayout } = useAppLayoutStore()
-
-function changeToBlank() {
-  setLayout('BlankLayout')
-}
-function changeToApp() {
-  setLayout('AppLayout')
-}
 </script>
 
 <template>
@@ -49,16 +38,7 @@ function changeToApp() {
             <h2 class="text-lg font-bold text-blue-500">
               Change Layout
             </h2>
-
-            <span>Current Layout: {{ layout }}</span>
-
-            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md" @click="changeToBlank">
-              Blank Layout
-            </button>
-
-            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md" @click="changeToApp">
-              App Layout
-            </button>
+            <ChangeLayout />
           </div>
 
           <div class="mt-4">
