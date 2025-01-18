@@ -10,7 +10,7 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-const sidebarOpen = defineModel('sidebarOpen', { type: Boolean, default: false })
+const sidebarOpen = defineModel<boolean>('sidebarOpen')
 
 const { isActiveRoute } = useRouteHelper()
 </script>

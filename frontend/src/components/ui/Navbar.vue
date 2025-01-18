@@ -10,7 +10,7 @@ import {
 
 interface Props { userNavigation: UserNavigationItem[] }
 const props = defineProps<Props>()
-const sidebarOpen = defineModel('sidebarOpen', { type: Boolean, default: false })
+const sidebarOpen = defineModel<boolean>('sidebarOpen')
 </script>
 
 <template>
