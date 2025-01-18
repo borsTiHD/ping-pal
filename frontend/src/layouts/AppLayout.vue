@@ -11,10 +11,7 @@ import {
 } from '@headlessui/vue'
 import {
   Bell,
-  Calendar,
-  ChartPie,
   ChevronDown,
-  Files,
   FolderClosed,
   House,
   Menu as MenuIcon,
@@ -24,23 +21,26 @@ import {
   X,
 } from 'lucide-vue-next'
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+function isActiveRoute(path) {
+  return route.path === path
+}
 
 const navigation = [
-  { name: 'Dashboard', href: '#', icon: House, current: true },
-  { name: 'Team', href: '#', icon: Users, current: false },
-  { name: 'Projects', href: '#', icon: FolderClosed, current: false },
-  { name: 'Calendar', href: '#', icon: Calendar, current: false },
-  { name: 'Documents', href: '#', icon: Files, current: false },
-  { name: 'Reports', href: '#', icon: ChartPie, current: false },
+  { name: 'Dashboard', path: '/', icon: House },
+  { name: 'Team', path: '#', icon: Users },
+  { name: 'Projects', path: '#', icon: FolderClosed },
 ]
 const teams = [
-  { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-  { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-  { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
+  { id: 1, name: 'Heroicons', path: '#', initial: 'H' },
+  { id: 2, name: 'Tailwind Labs', path: '#', initial: 'T' },
+  { id: 3, name: 'Workcation', path: '#', initial: 'W' },
 ]
 const userNavigation = [
-  { name: 'Your profile', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Your profile', path: '#' },
+  { name: 'Sign out', path: '#' },
 ]
 
 const sidebarOpen = ref(false)
@@ -48,6 +48,7 @@ const sidebarOpen = ref(false)
 
 <template>
   <div class="h-full flex overflow-hidden text-gray-900 dark:text-gray-100">
+    <!-- Small/mobile sidebar -->
     <TransitionRoot as="template" :show="sidebarOpen">
       <Dialog class="relative z-50 lg:hidden" @close="sidebarOpen = false">
         <TransitionChild as="template" enter="transition-opacity ease-linear duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="transition-opacity ease-linear duration-300" leave-from="opacity-100" leave-to="opacity-0">
@@ -75,10 +76,19 @@ const sidebarOpen = ref(false)
                     <li>
                       <ul role="list" class="-mx-2 space-y-1">
                         <li v-for="item in navigation" :key="item.name">
-                          <a :href="item.href" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold" :class="[item.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600']">
-                            <component :is="item.icon" class="size-6 shrink-0" :class="[item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600']" aria-hidden="true" />
+                          <RouterLink
+                            :to="item.path"
+                            class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold"
+                            :class="[isActiveRoute(item.path) ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600']"
+                          >
+                            <component
+                              :is="item.icon"
+                              class="size-6 shrink-0"
+                              :class="[isActiveRoute(item.path) ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600']"
+                              aria-hidden="true"
+                            />
                             {{ item.name }}
-                          </a>
+                          </RouterLink>
                         </li>
                       </ul>
                     </li>
@@ -88,18 +98,35 @@ const sidebarOpen = ref(false)
                       </div>
                       <ul role="list" class="-mx-2 mt-2 space-y-1">
                         <li v-for="team in teams" :key="team.name">
-                          <a :href="team.href" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold" :class="[team.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600']">
-                            <span class="flex size-6 shrink-0 items-center justify-center rounded-lg border bg-white text-[0.625rem] font-medium" :class="[team.current ? 'border-indigo-600 text-indigo-600' : 'border-gray-200 text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600']">{{ team.initial }}</span>
+                          <RouterLink
+                            :to="team.path"
+                            class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold"
+                            :class="[isActiveRoute(team.path) ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600']"
+                          >
+                            <span
+                              class="flex size-6 shrink-0 items-center justify-center rounded-lg border bg-white text-[0.625rem] font-medium"
+                              :class="[isActiveRoute(team.path) ? 'border-indigo-600 text-indigo-600' : 'border-gray-200 text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600']"
+                            >
+                              {{ team.initial }}
+                            </span>
                             <span class="truncate">{{ team.name }}</span>
-                          </a>
+                          </RouterLink>
                         </li>
                       </ul>
                     </li>
                     <li class="mt-auto">
-                      <a href="#" class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                        <Settings class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" aria-hidden="true" />
+                      <RouterLink
+                        to="/settings"
+                        class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold"
+                        :class="[isActiveRoute('/settings') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600']"
+                      >
+                        <Settings
+                          class="size-6 shrink-0"
+                          :class="[isActiveRoute('/settings') ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600']"
+                          aria-hidden="true"
+                        />
                         Settings
-                      </a>
+                      </RouterLink>
                     </li>
                   </ul>
                 </nav>
@@ -122,10 +149,19 @@ const sidebarOpen = ref(false)
             <li>
               <ul role="list" class="-mx-2 space-y-1">
                 <li v-for="item in navigation" :key="item.name">
-                  <a :href="item.href" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold" :class="[item.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600']">
-                    <component :is="item.icon" class="size-6 shrink-0" :class="[item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600']" aria-hidden="true" />
+                  <RouterLink
+                    :to="item.path"
+                    class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold"
+                    :class="[isActiveRoute(item.path) ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600']"
+                  >
+                    <component
+                      :is="item.icon"
+                      class="size-6 shrink-0"
+                      :class="[isActiveRoute(item.path) ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600']"
+                      aria-hidden="true"
+                    />
                     {{ item.name }}
-                  </a>
+                  </RouterLink>
                 </li>
               </ul>
             </li>
@@ -135,26 +171,45 @@ const sidebarOpen = ref(false)
               </div>
               <ul role="list" class="-mx-2 mt-2 space-y-1">
                 <li v-for="team in teams" :key="team.name">
-                  <a :href="team.href" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold" :class="[team.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600']">
-                    <span class="flex size-6 shrink-0 items-center justify-center rounded-lg border bg-white text-[0.625rem] font-medium" :class="[team.current ? 'border-indigo-600 text-indigo-600' : 'border-gray-200 text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600']">{{ team.initial }}</span>
+                  <RouterLink
+                    :to="team.path"
+                    class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold"
+                    :class="[isActiveRoute(team.path) ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600']"
+                  >
+                    <span
+                      class="flex size-6 shrink-0 items-center justify-center rounded-lg border bg-white text-[0.625rem] font-medium"
+                      :class="[isActiveRoute(team.path) ? 'border-indigo-600 text-indigo-600' : 'border-gray-200 text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600']"
+                    >
+                      {{ team.initial }}
+                    </span>
                     <span class="truncate">{{ team.name }}</span>
-                  </a>
+                  </RouterLink>
                 </li>
               </ul>
             </li>
             <li class="mt-auto">
-              <a href="#" class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                <Settings class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" aria-hidden="true" />
+              <RouterLink
+                to="/settings"
+                class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold"
+                :class="[isActiveRoute('/settings') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600']"
+              >
+                <Settings
+                  class="size-6 shrink-0"
+                  :class="[isActiveRoute('/settings') ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600']"
+                  aria-hidden="true"
+                />
                 Settings
-              </a>
+              </RouterLink>
             </li>
           </ul>
         </nav>
       </div>
     </div>
 
+    <!-- Main content area -->
     <div class="lg:pl-72">
-      <div class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-xs sm:gap-x-6 sm:px-6 lg:px-8">
+      <!-- Top bar -->
+      <header class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-xs sm:gap-x-6 sm:px-6 lg:px-8">
         <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" @click="sidebarOpen = true">
           <span class="sr-only">Open sidebar</span>
           <MenuIcon class="size-6" aria-hidden="true" />
@@ -190,15 +245,18 @@ const sidebarOpen = ref(false)
               <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
                 <MenuItems class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 ring-1 shadow-lg ring-gray-900/5 focus:outline-hidden">
                   <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
-                    <a :href="item.href" class="block px-3 py-1 text-sm/6 text-gray-900" :class="[active ? 'bg-gray-50 outline-hidden' : '']">{{ item.name }}</a>
+                    <RouterLink :to="item.path" class="block px-3 py-1 text-sm/6 text-gray-900" :class="[active ? 'bg-gray-50 outline-hidden' : '']">
+                      {{ item.name }}
+                    </RouterLink>
                   </MenuItem>
                 </MenuItems>
               </transition>
             </Menu>
           </div>
         </div>
-      </div>
+      </header>
 
+      <!-- App Content -->
       <main class="py-10">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <slot />
