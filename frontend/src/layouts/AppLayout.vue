@@ -207,7 +207,7 @@ const sidebarOpen = ref(false)
     </div>
 
     <!-- Main content area -->
-    <div class="lg:pl-72">
+    <div class="lg:pl-72 w-full">
       <!-- Top bar -->
       <header class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 dark:border-neutral-600 bg-white dark:bg-neutral-800 px-4 shadow-xs sm:gap-x-6 sm:px-6 lg:px-8">
         <button type="button" class="-m-2.5 p-2.5 text-gray-700 dark:text-gray-300 lg:hidden" @click="sidebarOpen = true">
