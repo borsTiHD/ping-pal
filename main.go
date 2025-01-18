@@ -40,8 +40,8 @@ func main() {
 		// Window options
 		Width:     configs.Width,
 		Height:    configs.Height,
-		MinWidth:  configs.Width,
-		MinHeight: configs.Height,
+		MinWidth:  configs.MinWidth,
+		MinHeight: configs.MinHeight,
 		// MaxWidth:  configs.Width,
 		// MaxHeight: configs.Height,
 		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},

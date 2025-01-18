@@ -14,8 +14,10 @@ const (
 
 // Window
 const (
-	Width  = 1200
-	Height = 650
+	Width     = 1200
+	Height    = 650
+	MinWidth  = 470
+	MinHeight = 650
 )
 
 // Dateien
