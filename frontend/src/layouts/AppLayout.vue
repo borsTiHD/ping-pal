@@ -265,9 +265,3 @@ const sidebarOpen = ref(false)
     </div>
   </div>
 </template>
-
-<style>
-html, body {
-  @apply bg-gray-50 dark:bg-neutral-700 h-full;
-}
-</style>
