@@ -29,15 +29,15 @@ const { isActiveRoute } = useRouteHelper()
                   :to="item.path"
                   class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold"
                   :class="[isActiveRoute(item.path)
-                    ? 'bg-gray-50 dark:bg-neutral-700 text-indigo-600 dark:text-indigo-400'
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-700 hover:text-indigo-400']"
+                    ? 'bg-gray-50 dark:bg-neutral-700 text-primary-600 dark:text-primary-400'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-700 hover:text-primary-400']"
                 >
                   <component
                     :is="item.icon"
                     class="size-6 shrink-0"
                     :class="[isActiveRoute(item.path)
-                      ? 'text-indigo-600 dark:text-indigo-400'
-                      : 'text-gray-400 dark:text-gray-400 group-hover:text-indigo-400']"
+                      ? 'text-primary-600 dark:text-primary-400'
+                      : 'text-gray-400 dark:text-gray-400 group-hover:text-primary-400']"
                     aria-hidden="true"
                   />
                   {{ item.name }}
@@ -55,14 +55,14 @@ const { isActiveRoute } = useRouteHelper()
                   :to="team.path"
                   class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold"
                   :class="[isActiveRoute(team.path)
-                    ? 'bg-gray-50 dark:bg-neutral-700 text-indigo-600 dark:text-indigo-400'
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-700 hover:text-indigo-400']"
+                    ? 'bg-gray-50 dark:bg-neutral-700 text-primary-600 dark:text-primary-400'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-700 hover:text-primary-400']"
                 >
                   <span
                     class="flex size-6 shrink-0 items-center justify-center rounded-lg border bg-white dark:bg-neutral-800 text-[0.625rem] font-medium"
                     :class="[isActiveRoute(team.path)
-                      ? 'border-indigo-600 text-indigo-600 dark:text-indigo-400'
-                      : 'border-gray-200 dark:border-neutral-600 text-gray-400 dark:text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-400']"
+                      ? 'border-primary-600 text-primary-600 dark:text-primary-400'
+                      : 'border-gray-200 dark:border-neutral-600 text-gray-400 dark:text-gray-400 group-hover:border-primary-600 group-hover:text-primary-400']"
                   >
                     {{ team.initial }}
                   </span>
@@ -76,14 +76,14 @@ const { isActiveRoute } = useRouteHelper()
               to="/settings"
               class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold"
               :class="[isActiveRoute('/settings')
-                ? 'bg-gray-50 dark:bg-neutral-700 text-indigo-600 dark:text-indigo-400'
-                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-700 hover:text-indigo-400']"
+                ? 'bg-gray-50 dark:bg-neutral-700 text-primary-600 dark:text-primary-400'
+                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-700 hover:text-primary-400']"
             >
               <Settings
                 class="size-6 shrink-0"
                 :class="[isActiveRoute('/settings')
-                  ? 'text-indigo-600 dark:text-indigo-400'
-                  : 'text-gray-400 dark:text-gray-400 group-hover:text-indigo-400']"
+                  ? 'text-primary-600 dark:text-primary-400'
+                  : 'text-gray-400 dark:text-gray-400 group-hover:text-primary-400']"
                 aria-hidden="true"
               />
               Settings
