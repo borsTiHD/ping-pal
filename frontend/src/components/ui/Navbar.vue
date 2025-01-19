@@ -1,12 +1,7 @@
 <script setup lang="ts">
 import type { UserNavigationItem } from '@/types/sidebar'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import {
-  Bell,
-  ChevronDown,
-  Menu as MenuIcon,
-  Search,
-} from 'lucide-vue-next'
+import { Bell, ChevronDown, Menu as MenuIcon, Search } from 'lucide-vue-next'
 
 interface Props { userNavigation: UserNavigationItem[] }
 const props = defineProps<Props>()
