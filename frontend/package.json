@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@9.15.3+sha512.1f79bc245a66eb0b07c5d4d83131240774642caaa86ef7d0434ab47c0d16f66b04e21e0c086eb61e62c77efc4d7f7ec071afad3796af64892fae66509173893a",
+  "packageManager": "pnpm@9.15.4",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
@@ -17,8 +17,8 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
     "@primevue/themes": "^4.2.5",
-    "@tanstack/vue-query": "^5.64.1",
-    "@tanstack/vue-query-devtools": "^5.64.1",
+    "@tanstack/vue-query": "^5.64.2",
+    "@tanstack/vue-query-devtools": "^5.64.2",
     "@vueuse/core": "^12.4.0",
     "lucide-vue-next": "^0.473.0",
     "pinia": "^2.3.0",
