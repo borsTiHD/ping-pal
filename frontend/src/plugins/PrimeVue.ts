@@ -1,4 +1,6 @@
 import type { App } from 'vue'
+import { appTheme } from '@/theme/index'
+import { definePreset } from '@primevue/themes'
 import Aura from '@primevue/themes/aura'
 import Button from 'primevue/button'
 import Card from 'primevue/card'
@@ -9,12 +11,14 @@ import ScrollPanel from 'primevue/scrollpanel'
 import SelectButton from 'primevue/selectbutton'
 import ToggleSwitch from 'primevue/toggleswitch'
 
+const AppPreset = definePreset(Aura, appTheme)
+
 export const PrimeVuePlugin = {
   install(app: App) {
     app.use(PrimeVue, {
       ripple: true,
       theme: {
-        preset: Aura,
+        preset: AppPreset,
         options: {
           prefix: 'p',
           darkModeSelector: '.dark',
