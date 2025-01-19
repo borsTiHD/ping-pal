@@ -3,11 +3,11 @@ body {
 }
 
 html, body {
-  @apply bg-gray-50 dark:bg-neutral-700 h-full;
+  @apply bg-surface-100 dark:bg-surface-700 h-full;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply font-bold text-primary-500 dark:text-primary-400;
+  @apply font-bold text-primary-600 dark:text-primary-400;
 }
 h1 {
   @apply text-3xl underline;
@@ -27,3 +27,37 @@ h5 {
 h6 {
   @apply text-sm;
 }
+
+/* Scrollbar styles */
+/* * {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-bg) var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-bg);
+  border-radius: 10px;
+  border: 2px solid var(--scrollbar-track);
+} */
+
+/* Light mode scrollbar variables */
+/* :root {
+  --scrollbar-bg: #888;
+  --scrollbar-track: #f1f1f1;
+} */
+
+/* Dark mode scrollbar variables */
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --scrollbar-bg: var(--p-surface-800);
+    --scrollbar-track: var(--p-surface-600);
+  }
+} */

@@ -27,7 +27,7 @@ const userNavigation: UserNavigationItem[] = [
 </script>
 
 <template>
-  <div class="h-full flex overflow-hidden text-gray-900 dark:text-gray-100">
+  <div class="h-full flex overflow-hidden text-surface-700 dark:text-surface-0">
     <!-- Small/mobile sidebar -->
     <SidebarMobile v-model:sidebar-open="sidebarOpen" :navigation :teams />
 
