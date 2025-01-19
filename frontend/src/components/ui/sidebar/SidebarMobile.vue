@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { NavigationItem, TeamItem } from '@/types/sidebar'
+import Logo from '@/components/ui/Logo.vue'
 import { useRouteHelper } from '@/composables/route-helper'
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { Settings, X } from 'lucide-vue-next'
@@ -37,7 +38,7 @@ const { isActiveRoute } = useRouteHelper()
             <!-- Sidebar component, swap this element with another sidebar if you like -->
             <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-surface-0 dark:bg-surface-900 px-6 pb-4">
               <div class="flex h-16 shrink-0 items-center">
-                <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+                <Logo />
               </div>
               <nav class="flex flex-1 flex-col">
                 <ul role="list" class="flex flex-1 flex-col gap-y-7">
