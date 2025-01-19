@@ -24,13 +24,11 @@ async function onClick() {
       <div class="flex flex-col items-center p-4 gap-4">
         <div v-if="isLoading" class="flex flex-col justify-center items-center">
           <ProgressSpinner />
-          <span class="text-primary-500">Loading...</span>
+          <h2>Loading...</h2>
         </div>
 
         <div v-else class="flex flex-col items-center p-4 gap-4">
-          <h1 className="text-3xl font-bold underline text-primary-500">
-            {{ appName }}
-          </h1>
+          <h1>{{ appName }}</h1>
 
           <div class="flex items-center gap-1">
             <InputText v-model="input" name="username" type="text" placeholder="Enter your name" @keyup.enter="onClick" />
