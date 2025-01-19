@@ -18,17 +18,17 @@ async function onClick() {
 <template>
   <Card>
     <template #title>
-      Test
+      Home
     </template>
     <template #content>
       <div class="flex flex-col items-center p-4 gap-4">
         <div v-if="isLoading" class="flex flex-col justify-center items-center">
           <ProgressSpinner />
-          <span class="text-blue-500">Loading...</span>
+          <span class="text-primary-500">Loading...</span>
         </div>
 
         <div v-else class="flex flex-col items-center p-4 gap-4">
-          <h1 className="text-3xl font-bold underline text-blue-500">
+          <h1 className="text-3xl font-bold underline text-primary-500">
             {{ appName }}
           </h1>
 
