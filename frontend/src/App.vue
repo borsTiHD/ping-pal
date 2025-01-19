@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import { useDarkModeState } from '@/composables/darkmode'
 import layouts from '@/layouts'
 import router from '@/router'
 import { useAppLayoutStore } from '@/stores/app-layout'
 import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
 import { storeToRefs } from 'pinia'
 import { RouterView } from 'vue-router'
+
+// Dark mode system
+useDarkModeState()
 
 // Layout system
 const { layout } = storeToRefs(useAppLayoutStore())
