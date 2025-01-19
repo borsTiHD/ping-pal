@@ -21,17 +21,9 @@ function changeToOld() {
     <span>Current Layout: {{ layout }}</span>
 
     <div class="flex gap-2 items-center">
-      <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md" @click="changeToBlank">
-        Blank Layout
-      </button>
-
-      <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md" @click="changeToApp">
-        App Layout
-      </button>
-
-      <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md" @click="changeToOld">
-        Old Layout
-      </button>
+      <Button label="Blank Layout" @click="changeToBlank" />
+      <Button label="App Layout" @click="changeToApp" />
+      <Button label="Old Layout" @click="changeToOld" />
     </div>
   </div>
 </template>
