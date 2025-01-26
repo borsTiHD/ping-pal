@@ -26,32 +26,6 @@ const { data: config, isFetching: configIsFetching } = useConfigQuery()
             <dl class="mt-6 divide-y divide-surface-200 dark:divide-surface-500 border-t border-surface-200 dark:border-surface-500 text-sm/6">
               <ColorModeChanger />
               <ChangeLayout />
-              <div class="py-6 sm:flex">
-                <dt class="font-medium  sm:w-64 sm:flex-none sm:pr-6">
-                  Email address
-                </dt>
-                <dd class="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
-                  <div class="">
-                    tom.cook@example.com
-                  </div>
-                  <button type="button" class="font-semibold text-primary-600 dark:text-primary-600 hover:text-primary-500">
-                    Update
-                  </button>
-                </dd>
-              </div>
-              <div class="py-6 sm:flex">
-                <dt class="font-medium  sm:w-64 sm:flex-none sm:pr-6">
-                  Title
-                </dt>
-                <dd class="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
-                  <div class="">
-                    Human Resources Manager
-                  </div>
-                  <button type="button" class="font-semibold text-primary-600 dark:text-primary-600 hover:text-primary-500">
-                    Update
-                  </button>
-                </dd>
-              </div>
             </dl>
           </div>
         </div>
