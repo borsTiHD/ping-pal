@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useDarkModeState } from '@/composables/darkmode'
+import { useConfig } from '@/composables/config'
 
-const { colorModeModel, colorModes } = useDarkModeState()
+const { colorMode, colorModes } = useConfig()
 </script>
 
 <template>
@@ -14,7 +14,7 @@ const { colorModeModel, colorModes } = useDarkModeState()
       <span class="text-sm text-surface-500 dark:text-surface-400">
         Change the color mode of the application
       </span>
-      <SelectButton v-model="colorModeModel" :options="colorModes" option-label="label" option-value="value" :allow-empty="false" />
+      <SelectButton v-model="colorMode" :options="colorModes" option-label="label" option-value="value" :allow-empty="false" />
     </dd>
   </div>
 </template>

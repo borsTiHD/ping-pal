@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDarkModeState } from '@/composables/darkmode'
+import { useColorModeWatcher } from '@/composables/colormode-watcher'
 import layouts from '@/layouts'
 import router from '@/router'
 import { useAppLayoutStore } from '@/stores/app-layout'
@@ -7,8 +7,9 @@ import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
 import { storeToRefs } from 'pinia'
 import { RouterView } from 'vue-router'
 
-// Dark mode system
-useDarkModeState()
+// Watcher for color mode
+// Changing the color mode will be reflected in the whole application
+useColorModeWatcher()
 
 // Layout system
 const { layout } = storeToRefs(useAppLayoutStore())

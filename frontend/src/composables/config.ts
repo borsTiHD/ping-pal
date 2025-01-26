@@ -1,13 +1,35 @@
 import type { configs } from 'wailsjs/go/models'
 import { getObjectValueByPath, setObjectValueByPath } from '@/lib/object'
 import { mutateConfig, useConfigQuery } from '@/queries/config'
+import { usePreferredDark } from '@vueuse/core'
 import { computed } from 'vue'
+
+export type ColorMode = 'auto' | 'dark' | 'light'
+
+export interface ColorModeOption {
+  value: string
+  label: string
+}
+
+export type ColorModes = ColorModeOption[]
 
 export function useConfig() {
   const { data: config } = useConfigQuery()
   const { mutateAsync } = mutateConfig()
 
-  const colorMode = computedConfigKey<configs.UserConfig['colorMode']>('user.colorMode')
+  // const colorMode = computedConfigKey<configs.UserConfig['colorMode']>('user.colorMode')
+  const colorMode = computedConfigKey<configs.UserConfig['colorMode'] & ColorMode>('user.colorMode')
+
+  // Color mode
+  const isSystemDarkMode = usePreferredDark()
+  const isDarkMode = computed(() => colorMode.value === 'dark' || (colorMode.value === 'auto' && isSystemDarkMode.value))
+
+  // List of available color modes
+  const colorModes: ColorModes = [
+    { value: 'auto', label: 'Auto' },
+    { value: 'dark', label: 'Dark' },
+    { value: 'light', label: 'Light' },
+  ]
 
   function computedConfigKey<T>(key: string) {
     return computed({
@@ -32,8 +54,12 @@ export function useConfig() {
   }
 
   return {
-    // Settings
+    // Mutable Settings
     colorMode,
+
+    // Constants
+    isDarkMode,
+    colorModes,
 
     // Method to update a certain config option
     updateConfigOption,
