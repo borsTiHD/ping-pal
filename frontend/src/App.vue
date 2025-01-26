@@ -4,12 +4,12 @@ import { useLayoutWatcher } from '@/composables/layout-watcher'
 import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
 import { RouterView } from 'vue-router'
 
+// Layout system
+const { layout } = useLayoutWatcher()
+
 // Watcher for color mode
 // Changing the color mode will be reflected in the whole application
 useColorModeWatcher()
-
-// Layout system
-const { layout } = useLayoutWatcher()
 </script>
 
 <template>
