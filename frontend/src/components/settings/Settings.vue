@@ -25,6 +25,7 @@ const { data: config, isFetching: configIsFetching } = useConfigQuery()
 
             <dl class="mt-6 divide-y divide-surface-200 dark:divide-surface-500 border-t border-surface-200 dark:border-surface-500 text-sm/6">
               <ColorModeChanger />
+              <ChangeLayout />
               <div class="py-6 sm:flex">
                 <dt class="font-medium  sm:w-64 sm:flex-none sm:pr-6">
                   Email address
@@ -61,11 +62,6 @@ const { data: config, isFetching: configIsFetching } = useConfigQuery()
           <div class="flex flex-col gap-4">
             <h2>Window Size</h2>
             <WindowSize />
-          </div>
-
-          <div class="flex flex-col gap-4">
-            <h2>Change Layout</h2>
-            <ChangeLayout />
           </div>
 
           <div class="mt-4">

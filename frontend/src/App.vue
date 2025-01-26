@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { useColorModeWatcher } from '@/composables/colormode-watcher'
-import layouts from '@/layouts'
-import router from '@/router'
-import { useAppLayoutStore } from '@/stores/app-layout'
+import { useLayoutWatcher } from '@/composables/layout-watcher'
 import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
-import { storeToRefs } from 'pinia'
 import { RouterView } from 'vue-router'
 
 // Watcher for color mode
@@ -12,10 +9,7 @@ import { RouterView } from 'vue-router'
 useColorModeWatcher()
 
 // Layout system
-const { layout } = storeToRefs(useAppLayoutStore())
-router.afterEach((to) => {
-  layout.value = layouts[to.meta.layout as string]
-})
+const { layout } = useLayoutWatcher()
 </script>
 
 <template>

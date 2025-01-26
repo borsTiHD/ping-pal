@@ -17,17 +17,15 @@ import AppLayout from './AppLayout.vue'
 import BlankLayout from './BlankLayout.vue'
 import OldAppLayout from './OldAppLayout.vue'
 
-export interface Layouts {
-  [key: string]: any
-  AppLayout: typeof AppLayout
-  OldAppLayout: typeof OldAppLayout
-  BlankLayout: typeof BlankLayout
+export interface LayoutItem {
+  name: string
+  layout: any
 }
 
-const layouts: Layouts = {
-  AppLayout,
-  OldAppLayout,
-  BlankLayout,
-}
+const layouts: LayoutItem[] = [
+  { name: 'AppLayout', layout: AppLayout },
+  { name: 'OldAppLayout', layout: OldAppLayout },
+  { name: 'BlankLayout', layout: BlankLayout },
+]
 
 export default layouts

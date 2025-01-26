@@ -1,29 +1,24 @@
 <script setup lang="ts">
+import SettingItem from '@/components/settings/SettingItem.vue'
+import layouts from '@/layouts'
 import { useAppLayoutStore } from '@/stores/app-layout'
 import { storeToRefs } from 'pinia'
+import { computed } from 'vue'
 
-const { layout } = storeToRefs(useAppLayoutStore())
+const { layoutName } = storeToRefs(useAppLayoutStore())
 const { setLayout } = useAppLayoutStore()
 
-function changeToBlank() {
-  setLayout('BlankLayout')
-}
-function changeToApp() {
-  setLayout('AppLayout')
-}
-function changeToOld() {
-  setLayout('OldAppLayout')
-}
+const layoutModel = computed({
+  get: () => layoutName.value,
+  set: value => setLayout(value as string),
+})
 </script>
 
 <template>
-  <div class="flex flex-col gap-2 items-center">
-    <span>Current Layout: {{ layout }}</span>
-
-    <div class="flex gap-2 items-center">
-      <Button label="Blank Layout" @click="changeToBlank" />
-      <Button label="App Layout" @click="changeToApp" />
-      <Button label="Old Layout" @click="changeToOld" />
-    </div>
-  </div>
+  <SettingItem
+    label="Layout"
+    description="Change the layout of the application"
+  >
+    <SelectButton v-model="layoutModel" :options="layouts" option-label="name" option-value="name" :allow-empty="false" />
+  </SettingItem>
 </template>

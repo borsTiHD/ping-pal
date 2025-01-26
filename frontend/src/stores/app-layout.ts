@@ -1,17 +1,26 @@
-import type { Layouts } from '@/layouts'
+// import type { LayoutItem } from '@/layouts'
 import layouts from '@/layouts'
 import { defineStore } from 'pinia'
-import { shallowRef } from 'vue'
+import { ref, shallowRef } from 'vue'
 
 export const useAppLayoutStore = defineStore('app-layout', () => {
-  const layout = shallowRef<Layouts | 'div'>('div')
+  const layoutName = ref()
+  const layout = shallowRef<any | 'div'>('div')
 
-  function setLayout(name: keyof Layouts) {
-    layout.value = layouts[name]
+  function setLayout(name: string | undefined) {
+    const layoutItem = layouts.find(l => l.name === name)
+    if (!layoutItem) {
+      console.error(`Layout "${name}" not found`)
+      return
+    }
+
+    layoutName.value = name
+    layout.value = layoutItem ? layoutItem.layout : 'div'
   }
 
   return {
     layout,
+    layoutName,
     setLayout,
   }
 })
