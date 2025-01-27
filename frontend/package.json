@@ -17,8 +17,8 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
     "@primevue/themes": "^4.2.5",
-    "@tanstack/vue-query": "^5.64.2",
-    "@tanstack/vue-query-devtools": "^5.64.2",
+    "@tanstack/vue-query": "^5.65.0",
+    "@tanstack/vue-query-devtools": "^5.65.0",
     "@vueuse/core": "^12.5.0",
     "lucide-vue-next": "^0.473.0",
     "pinia": "^2.3.1",
