@@ -63,3 +63,22 @@ export namespace configs {
 
 }
 
+export namespace hosts {
+	
+	export class HostItem {
+	    name: string;
+	    address: string;
+	
+	    static createFrom(source: any = {}) {
+	        return new HostItem(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.name = source["name"];
+	        this.address = source["address"];
+	    }
+	}
+
+}
+

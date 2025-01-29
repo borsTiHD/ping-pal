@@ -8,6 +8,7 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/runtime"
 
 	"ping-pal/backend/configs"
+	"ping-pal/backend/hosts"
 )
 
 // App struct
@@ -93,4 +94,12 @@ func (a *App) SaveConfig(config configs.Config) {
 
 func (a *App) Greet(name string) string {
 	return fmt.Sprintf("Hello %s, It's show time!", name)
+}
+
+func (a *App) AddHost(host hosts.HostItem) {
+	hosts.AddItem(host)
+}
+
+func (a *App) GetHosts() []hosts.HostItem {
+	return hosts.GetItems()
 }
