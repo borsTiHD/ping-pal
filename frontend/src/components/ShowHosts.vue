@@ -1,28 +1,27 @@
 <script setup lang="ts">
 import type { hosts } from 'wailsjs/go/models'
+import { mutateHosts, useHostsQuery } from '@/queries/hosts'
 import { ref } from 'vue'
-import { AddHost, GetHosts } from 'wailsjs/go/main/App'
 
-const items = ref<hosts.HostItem[]>()
+const { data, isFetching } = useHostsQuery()
+const { mutateAsync, isPending } = mutateHosts()
 
 const name = ref<string>('')
 const address = ref<string>('')
 
 async function addHost() {
-  const newHost = {
+  if (!name.value || !address.value) {
+    return
+  }
+
+  const newHost: hosts.HostItem = {
     name: name.value,
     address: address.value,
   }
 
-  await AddHost(newHost)
+  await mutateAsync(newHost)
   name.value = ''
   address.value = ''
-  fetchHosts()
-}
-
-async function fetchHosts() {
-  const newHosts = await GetHosts()
-  items.value = newHosts
 }
 </script>
 
@@ -35,16 +34,17 @@ async function fetchHosts() {
       <div class="flex flex-col items-center p-4 gap-4">
         <div class="flex flex-col items-center p-4 gap-4">
           <div class="flex items-center gap-1">
-            <InputText v-model="name" name="name" type="text" placeholder="Enter host name" />
-            <InputText v-model="address" name="address" type="text" placeholder="Enter host address" />
-            <Button label="Add Host" @click="addHost" />
+            <InputText v-model="name" name="name" type="text" placeholder="Enter host name" :disabled="isPending" />
+            <InputText v-model="address" name="address" type="text" placeholder="Enter host address" :disabled="isPending" />
+            <Button label="Add Host" :disabled="isPending" :loading="isPending" @click="addHost" />
           </div>
 
-          <div class="flex items-center gap-1">
-            <Button label="Fetch Hosts" @click="fetchHosts" />
+          <div v-if="isFetching" class="flex flex-col justify-center items-center">
+            <ProgressSpinner />
+            <span class="text-primary-500">Loading...</span>
           </div>
 
-          <div class="flex flex-col items-center p-4 border border-gray-300 rounded-lg shadow-md w-full">
+          <div v-else class="flex flex-col items-center p-4 border border-gray-300 rounded-lg shadow-md w-full">
             <div class="flex items-center gap-4">
               <div class="w-1/4">
                 Name
@@ -53,7 +53,7 @@ async function fetchHosts() {
                 Address
               </div>
             </div>
-            <div v-for="(host, index) in items" :key="index" class="flex items-center gap-4">
+            <div v-for="(host, index) in data" :key="index" class="flex items-center gap-4">
               <div class="w-1/4">
                 {{ host.name }}
               </div>
