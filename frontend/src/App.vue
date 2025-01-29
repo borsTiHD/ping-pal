@@ -18,5 +18,6 @@ useColorModeWatcher()
       <RouterView />
     </component>
     <VueQueryDevtools />
+    <Toast position="bottom-right" group="bottom-right" />
   </main>
 </template>
