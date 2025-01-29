@@ -29,9 +29,10 @@ func idExists(id int) bool {
 func AddItem(item NewHost) {
 	id := generateUniqueID()
 	newItem := HostItem{
-		Id:      id,
-		Name:    item.Name,
-		Address: item.Address,
+		Id:        id,
+		Name:      item.Name,
+		Address:   item.Address,
+		CreatedAt: time.Now(),
 	}
 	hostItems = append(hostItems, newItem)
 }

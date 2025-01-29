@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { hosts } from 'wailsjs/go/models'
 import { deleteHostMutation, useHostsQuery } from '@/queries/hosts'
+import dayjs from 'dayjs'
 import { Trash2 } from 'lucide-vue-next'
 
 const { data: hostData, isFetching } = useHostsQuery()
@@ -13,6 +14,11 @@ const { mutateAsync } = deleteHostMutation()
       <Column field="id" header="Id" />
       <Column field="name" header="Name" />
       <Column field="address" header="Address" />
+      <Column field="created_at" header="Created">
+        <template #body="slotProps: { data: hosts.HostItem }">
+          {{ dayjs(slotProps.data.created_at).format('YYYY-MM-DD HH:mm:ss') }}
+        </template>
+      </Column>
       <Column header="Actions">
         <template #body="slotProps: { data: hosts.HostItem }">
           <Button severity="danger" aria-label="Delete" variant="outlined" @click="mutateAsync(slotProps.data.id)">
