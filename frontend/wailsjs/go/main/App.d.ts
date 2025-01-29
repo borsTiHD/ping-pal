@@ -5,6 +5,8 @@ import {configs} from '../models';
 
 export function AddHost(arg1:hosts.NewHost):Promise<void>;
 
+export function DeleteHost(arg1:number):Promise<boolean>;
+
 export function GetAppName():Promise<string>;
 
 export function GetChannel():Promise<string>;

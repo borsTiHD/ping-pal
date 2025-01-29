@@ -2,12 +2,12 @@
 import type { hosts } from 'wailsjs/go/models'
 import { useFormHelper } from '@/composables/form-helper'
 import { useToast } from '@/composables/toast'
-import { mutateHosts } from '@/queries/hosts'
+import { addHostMutation } from '@/queries/hosts'
 import { toTypedSchema } from '@vee-validate/zod'
 import { ErrorMessage, useForm } from 'vee-validate'
 import { z } from 'zod'
 
-const { mutateAsync } = mutateHosts()
+const { mutateAsync } = addHostMutation()
 const { onInvalidSubmit } = useFormHelper()
 
 const { success } = useToast()

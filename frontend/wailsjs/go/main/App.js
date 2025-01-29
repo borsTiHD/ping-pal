@@ -6,6 +6,10 @@ export function AddHost(arg1) {
   return window['go']['main']['App']['AddHost'](arg1);
 }
 
+export function DeleteHost(arg1) {
+  return window['go']['main']['App']['DeleteHost'](arg1);
+}
+
 export function GetAppName() {
   return window['go']['main']['App']['GetAppName']();
 }

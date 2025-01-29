@@ -103,3 +103,7 @@ func (a *App) AddHost(host hosts.NewHost) {
 func (a *App) GetHosts() []hosts.HostItem {
 	return hosts.GetItems()
 }
+
+func (a *App) DeleteHost(id int) bool {
+	return hosts.DeleteItem(id)
+}

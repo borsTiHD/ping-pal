@@ -39,3 +39,13 @@ func AddItem(item NewHost) {
 func GetItems() []HostItem {
 	return hostItems
 }
+
+func DeleteItem(id int) bool {
+	for i, item := range hostItems {
+		if item.Id == id {
+			hostItems = append(hostItems[:i], hostItems[i+1:]...)
+			return true
+		}
+	}
+	return false
+}

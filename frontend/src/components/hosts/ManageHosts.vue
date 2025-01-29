@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { useHostsQuery } from '@/queries/hosts'
+import { deleteHostMutation, useHostsQuery } from '@/queries/hosts'
+import { Trash2 } from 'lucide-vue-next'
 
 const { data: hostData, isFetching } = useHostsQuery()
+const { mutateAsync } = deleteHostMutation()
 </script>
 
 <template>
@@ -10,6 +12,13 @@ const { data: hostData, isFetching } = useHostsQuery()
       <Column field="id" header="Id" />
       <Column field="name" header="Name" />
       <Column field="address" header="Address" />
+      <Column header="Actions">
+        <template #body="slotProps">
+          <Button severity="danger" aria-label="Delete" variant="outlined" @click="mutateAsync(slotProps.data.id)">
+            <Trash2 />
+          </Button>
+        </template>
+      </Column>
     </DataTable>
   </div>
 </template>
