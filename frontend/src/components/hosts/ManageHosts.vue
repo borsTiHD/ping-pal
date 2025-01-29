@@ -13,6 +13,9 @@ const { data: hostData, isFetching } = useHostsQuery()
   <div v-else class="flex flex-col items-center p-4 border border-gray-300 rounded-lg shadow-md w-full">
     <div class="flex items-center gap-4">
       <div class="w-1/4">
+        Id
+      </div>
+      <div class="w-1/4">
         Name
       </div>
       <div class="w-1/4">
@@ -20,6 +23,9 @@ const { data: hostData, isFetching } = useHostsQuery()
       </div>
     </div>
     <div v-for="(host, index) in hostData" :key="index" class="flex items-center gap-4">
+      <div class="w-1/4">
+        {{ host.id }}
+      </div>
       <div class="w-1/4">
         {{ host.name }}
       </div>

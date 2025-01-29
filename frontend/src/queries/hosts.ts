@@ -13,7 +13,7 @@ export function mutateHosts() {
   const queryClient = useQueryClient()
   return useMutation({
     mutationKey: ['hosts', 'add'],
-    mutationFn: (host: hosts.HostItem) => AddHost(host),
+    mutationFn: (host: hosts.NewHost) => AddHost(host),
     onSuccess() {
       queryClient.refetchQueries({ queryKey: ['hosts', 'get-all'] })
     },

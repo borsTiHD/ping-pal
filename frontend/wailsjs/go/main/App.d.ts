@@ -3,7 +3,7 @@
 import {hosts} from '../models';
 import {configs} from '../models';
 
-export function AddHost(arg1:hosts.HostItem):Promise<void>;
+export function AddHost(arg1:hosts.NewHost):Promise<void>;
 
 export function GetAppName():Promise<string>;
 

@@ -66,11 +66,27 @@ export namespace configs {
 export namespace hosts {
 	
 	export class HostItem {
+	    id: number;
 	    name: string;
 	    address: string;
 	
 	    static createFrom(source: any = {}) {
 	        return new HostItem(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.id = source["id"];
+	        this.name = source["name"];
+	        this.address = source["address"];
+	    }
+	}
+	export class NewHost {
+	    name: string;
+	    address: string;
+	
+	    static createFrom(source: any = {}) {
+	        return new NewHost(source);
 	    }
 	
 	    constructor(source: any = {}) {

@@ -30,7 +30,7 @@ const [addressValue, addressAttrs] = defineField('address')
 const onSubmit = handleSubmit(async (values) => {
   const { name, address } = values
 
-  const newHost: hosts.HostItem = {
+  const newHost: hosts.NewHost = {
     name,
     address,
   }
