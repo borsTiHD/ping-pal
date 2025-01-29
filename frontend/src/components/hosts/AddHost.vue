@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { hosts } from 'wailsjs/go/models'
 import { useFormHelper } from '@/composables/form-helper'
+import { useToast } from '@/composables/toast'
 import { mutateHosts } from '@/queries/hosts'
 import { toTypedSchema } from '@vee-validate/zod'
 import { ErrorMessage, useForm } from 'vee-validate'
@@ -8,6 +9,8 @@ import { z } from 'zod'
 
 const { mutateAsync } = mutateHosts()
 const { onInvalidSubmit } = useFormHelper()
+
+const { success } = useToast()
 
 const addHostSchema = toTypedSchema(
   z.object({
@@ -34,6 +37,8 @@ const onSubmit = handleSubmit(async (values) => {
 
   await mutateAsync(newHost)
   resetForm()
+
+  success('New Host', 'Host added successfully')
 }, onInvalidSubmit)
 </script>
 
