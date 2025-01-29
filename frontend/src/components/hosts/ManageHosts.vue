@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { hosts } from 'wailsjs/go/models'
 import { deleteHostMutation, useHostsQuery } from '@/queries/hosts'
 import { Trash2 } from 'lucide-vue-next'
 
@@ -13,7 +14,7 @@ const { mutateAsync } = deleteHostMutation()
       <Column field="name" header="Name" />
       <Column field="address" header="Address" />
       <Column header="Actions">
-        <template #body="slotProps">
+        <template #body="slotProps: { data: hosts.HostItem }">
           <Button severity="danger" aria-label="Delete" variant="outlined" @click="mutateAsync(slotProps.data.id)">
             <Trash2 />
           </Button>
