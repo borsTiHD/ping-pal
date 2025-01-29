@@ -28,7 +28,7 @@ async function addHost() {
 <template>
   <Card>
     <template #title>
-      Hosts
+      Host Management
     </template>
     <template #content>
       <div class="flex flex-col items-center p-4 gap-4">
