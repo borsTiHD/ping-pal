@@ -4,7 +4,9 @@ import { definePreset } from '@primevue/themes'
 import Aura from '@primevue/themes/aura'
 import Button from 'primevue/button'
 import Card from 'primevue/card'
+import Column from 'primevue/column'
 import PrimeVue from 'primevue/config'
+import DataTable from 'primevue/datatable'
 import InputText from 'primevue/inputtext'
 import ProgressSpinner from 'primevue/progressspinner'
 import ScrollPanel from 'primevue/scrollpanel'
@@ -41,6 +43,8 @@ export const PrimeVuePlugin = {
     app.component('ProgressSpinner', ProgressSpinner)
     app.component('ToggleSwitch', ToggleSwitch)
     app.component('SelectButton', SelectButton)
+    app.component('DataTable', DataTable)
+    app.component('Column', Column)
 
     // Services
     app.use(ToastService)

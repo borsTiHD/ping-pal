@@ -11,27 +11,10 @@ const { data: hostData, isFetching } = useHostsQuery()
   </div>
 
   <div v-else class="flex flex-col items-center p-4 border border-gray-300 rounded-lg shadow-md w-full">
-    <div class="flex items-center gap-4">
-      <div class="w-1/4">
-        Id
-      </div>
-      <div class="w-1/4">
-        Name
-      </div>
-      <div class="w-1/4">
-        Address
-      </div>
-    </div>
-    <div v-for="(host, index) in hostData" :key="index" class="flex items-center gap-4">
-      <div class="w-1/4">
-        {{ host.id }}
-      </div>
-      <div class="w-1/4">
-        {{ host.name }}
-      </div>
-      <div class="w-1/4">
-        {{ host.address }}
-      </div>
-    </div>
+    <DataTable :value="hostData" table-style="min-width: 50rem">
+      <Column field="id" header="Id" />
+      <Column field="name" header="Name" />
+      <Column field="address" header="Address" />
+    </DataTable>
   </div>
 </template>
