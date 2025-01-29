@@ -5,7 +5,7 @@ import Test from '@/components/Test.vue'
 
 <template>
   <main class="flex flex-col items-center justify-center gap-4">
-    <Test />
     <ShowHosts />
+    <Test />
   </main>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAppNameQuery, useConfigQuery } from '@/queries/config'
+import { useAppNameQuery } from '@/queries/config'
 import { computed, ref } from 'vue'
 import { Greet } from 'wailsjs/go/main/App'
 
