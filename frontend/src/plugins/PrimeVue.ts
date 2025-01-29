@@ -9,6 +9,8 @@ import InputText from 'primevue/inputtext'
 import ProgressSpinner from 'primevue/progressspinner'
 import ScrollPanel from 'primevue/scrollpanel'
 import SelectButton from 'primevue/selectbutton'
+import Toast from 'primevue/toast'
+import ToastService from 'primevue/toastservice'
 import ToggleSwitch from 'primevue/toggleswitch'
 
 const AppPreset = definePreset(Aura, appTheme)
@@ -31,6 +33,7 @@ export const PrimeVuePlugin = {
     })
 
     // Components
+    app.component('Toast', Toast)
     app.component('ScrollPanel', ScrollPanel)
     app.component('Button', Button)
     app.component('Card', Card)
@@ -38,5 +41,8 @@ export const PrimeVuePlugin = {
     app.component('ProgressSpinner', ProgressSpinner)
     app.component('ToggleSwitch', ToggleSwitch)
     app.component('SelectButton', SelectButton)
+
+    // Services
+    app.use(ToastService)
   },
 }
